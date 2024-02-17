@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kamus Bahasa Inggris</title>
+<title>Kamus Bahasa Inggris-Indonesia</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<h2>Kamus Bahasa Inggris</h2>
+<h2>Kamus Bahasa Inggris-Indonesia</h2>
 
 <input type="text" id="searchInput" placeholder="Cari kata...">
 <div id="result"></div>
@@ -28,10 +28,10 @@
 <script>
     // Data kamus
     var dictionary = [
-        { word: "apple", definition: "a round fruit with red or green skin and a whitish interior" },
-        { word: "banana", definition: "a long curved fruit which grows in clusters and has soft pulpy flesh and yellow skin when ripe" },
-        { word: "cat", definition: "a small domesticated carnivorous mammal with soft fur" },
-        { word: "dog", definition: "a domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, and a barking, howling, or whining voice" }
+        { word_en: "apple", word_id: "apel", definition: "a round fruit with red or green skin and a whitish interior" },
+        { word_en: "banana", word_id: "pisang", definition: "a long curved fruit which grows in clusters and has soft pulpy flesh and yellow skin when ripe" },
+        { word_en: "cat", word_id: "kucing", definition: "a small domesticated carnivorous mammal with soft fur" },
+        { word_en: "dog", word_id: "anjing", definition: "a domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, and a barking, howling, or whining voice" }
         // tambahkan kata-kata lain di sini
     ];
 
@@ -48,8 +48,10 @@
 
         var found = false;
         for (var i = 0; i < dictionary.length; i++) {
-            if (dictionary[i].word.toLowerCase().includes(input)) {
-                resultDiv.innerHTML += "<b>" + dictionary[i].word + "</b>: " + dictionary[i].definition + "<br>";
+            if (dictionary[i].word_en.toLowerCase().includes(input) || dictionary[i].word_id.toLowerCase().includes(input)) {
+                resultDiv.innerHTML += "<b>English:</b> " + dictionary[i].word_en + "<br>" +
+                                       "<b>Indonesian:</b> " + dictionary[i].word_id + "<br>" +
+                                       "<b>Definition:</b> " + dictionary[i].definition + "<br><br>";
                 found = true;
             }
         }
@@ -69,3 +71,6 @@
 
 </body>
 </html>
+```
+
+Dalam contoh ini, terdapat data kamus berupa daftar kata bahasa Inggris beserta kata dalam bahasa Indonesia dan definisi. Ketika pengguna memasukkan kata kunci ke dalam input pencarian dan menekan Enter, fungsi `searchDictionary()` akan mencari kata tersebut dalam kamus dan menampilkan informasi yang sesuai.
